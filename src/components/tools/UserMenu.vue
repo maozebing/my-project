@@ -3,7 +3,7 @@
         <header-notice class="action"></header-notice>
         <a-dropdown>
             <span class="action ant-dropdown-link user-dropdown-menu">
-                <a-avatar icon="user" size="small"/>
+                <a-avatar size="small" src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"/>
             <span> 一杯闲</span>
             </span>
                 <a-menu slot="overlay" class="user-dropdown-menu-wrapper" placement="bottomRight">
@@ -58,25 +58,5 @@
     }
 </script>
 <style scoped>
-    .user-wrapper {
-        float: right;
-        height: 100%;
-    }
 
-    .user-wrapper .action:hover {
-        background: rgba(0, 0, 0, .025);
-    }
-
-    .user-wrapper .action {
-        cursor: pointer;
-        padding: 0 12px;
-        display: inline-block;
-        -webkit-transition: all .3s;
-        transition: all .3s;
-        height: 100%;
-        color: rgba(0, 0, 0, .65);
-    }
-    .user-dropdown-menu-wrapper.ant-dropdown-menu .ant-dropdown-menu-item {
-        width: 160px;
-    }
 </style>

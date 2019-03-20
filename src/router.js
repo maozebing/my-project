@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Home from './views/Home.vue'
+import BasicLayout from '@/components/layouts/BasicLayout'
+import RouteView from '@/components/layouts/RouteView'
 
 Vue.use(Router)
 
@@ -8,16 +9,28 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'home',
-      component: Home
+      name: 'index',
+      component: BasicLayout,
+      meta: { title: '首页' },
+      redirect: '/dashboard/workplace',
+      children: [
+        // dashboard
+        {
+          path: '/dashboard',
+          name: 'dashboard',
+          redirect: '/dashboard/workplace',
+          component: RouteView,
+          meta: { title: '综合展示', keepAlive: true, permission: [ 'dashboard' ] },
+          children: [
+            {
+              path: '/dashboard/workplace',
+              name: 'Workplace',
+              component: () => import('@/views/dashboard/Workplace'),
+              meta: { title: '工作台', keepAlive: true, permission: [ 'dashboard' ] }
+            }
+          ]
+        }
+      ]
     },
-    {
-      path: '/about',
-      name: 'about',
-      // route level code-splitting
-      // this generates a separate chunk (about.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import(/* webpackChunkName: "about" */ './views/About.vue')
-    }
   ]
 })
