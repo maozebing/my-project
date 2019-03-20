@@ -24,8 +24,14 @@ export default new Router({
           children: [
             {
               path: '/dashboard/workplace',
-              name: 'Workplace',
+              name: 'workplace',
               component: () => import('@/views/dashboard/Workplace'),
+              meta: { title: '工作台', keepAlive: true, permission: [ 'dashboard' ] }
+            },
+            {
+              path: '/dashboard/analysis',
+              name: 'analysis',
+              component: () => import('@/views/dashboard/Analysis'),
               meta: { title: '工作台', keepAlive: true, permission: [ 'dashboard' ] }
             }
           ]

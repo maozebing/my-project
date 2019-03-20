@@ -13,13 +13,13 @@
             </a-breadcrumb>
             <div class="detail">
                 <div class="main">
-                    <div class="row">
+<!--                    <div class="row">
                         <img v-if="logo" :src="logo" class="logo"/>
                         <h1 v-if="title" class="title">{{ title }}</h1>
                         <div class="action">
                             <slot name="action"></slot>
                         </div>
-                    </div>
+                    </div>-->
                     <div class="row">
                         <div v-if="avatar" class="avatar">
                             <a-avatar :src="avatar"/>

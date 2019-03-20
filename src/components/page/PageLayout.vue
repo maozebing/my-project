@@ -2,6 +2,7 @@
     <div :style="'margin: -24px -24px 0px;'">
         <page-header :avatar="avatar">
             <slot slot="content" name="headerContent"></slot>
+            <slot slot="extra" name="extra"></slot>
         </page-header>
         <div class="content">
             <div :class="['page-header-index-wide']">

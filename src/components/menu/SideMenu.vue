@@ -6,11 +6,16 @@
             width="256px"
             :class="['sider']">
         <logo></logo>
-        <a-menu :theme="theme" mode="inline" :defaultSelectedKeys="['4']" style="padding: 16px 0px;text-align: left">
+        <a-menu
+                :theme="theme"
+                mode="inline"
+                :defaultSelectedKeys="['workplace']"
+                style="padding: 16px 0px;text-align: left"
+                @click="menuClick">
             <a-sub-menu key="sub1">
                 <span slot="title"><a-icon type="user"/><span>综合展示</span></span>
-                <a-menu-item key="3">分析页</a-menu-item>
-                <a-menu-item key="4">工作台</a-menu-item>
+                <a-menu-item key="workplace">工作台</a-menu-item>
+                <a-menu-item key="analysis">分析页</a-menu-item>
             </a-sub-menu>
             <a-sub-menu key="sub2">
                 <span slot="title"><a-icon type="user"/><span>User</span></span>
@@ -45,6 +50,12 @@
                 default: false
             }
         },
+        methods: {
+            menuClick(item) {
+                this.$router.push({name: item.key})
+                console.log(item)
+            }
+        }
     }
 </script>
 
