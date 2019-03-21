@@ -4,13 +4,14 @@ import router from './router'
 import store from './store'
 import Antd from 'ant-design-vue'
 import "ant-design-vue/dist/antd.css";
+import '@/router/permission' // permission control
 
 Vue.config.productionTip = false;
 
 Vue.use(Antd);
 
 new Vue({
-  router,
-  store,
-  render: h => h(App)
+    router,
+    store,
+    render: h => h(App)
 }).$mount('#app')
