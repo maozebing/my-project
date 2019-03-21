@@ -3,10 +3,10 @@
         <header-notice class="action"></header-notice>
         <a-dropdown>
             <span class="action ant-dropdown-link user-dropdown-menu">
-                <a-avatar size="small" src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"/>
-            <span> 一杯闲</span>
+                <a-avatar size="small" :src="avatar()"/>
+            <span> {{nickname()}}</span>
             </span>
-                <a-menu slot="overlay" class="user-dropdown-menu-wrapper" placement="bottomRight">
+            <a-menu slot="overlay" class="user-dropdown-menu-wrapper" placement="bottomRight">
                 <a-menu-item key="0">
                     <router-link :to="{ name: 'center' }">
                         <a-icon type="user"/>
@@ -37,18 +37,22 @@
 
 <script>
     import HeaderNotice from './HeaderNotice'
+    import {mapGetters} from 'vuex'
+
     export default {
         name: 'UserMenu',
         components: {
             HeaderNotice
         },
         methods: {
+            ...mapGetters(['nickname', 'avatar']),
             handleLogout() {
+                let _this = this;
                 this.$confirm({
                     title: '提示',
                     content: '真的要注销登录吗 ?',
                     onOk() {
-                        window.location.reload()
+                        _this.$router.push({name: "login"})
                     },
                     onCancel() {
                     }

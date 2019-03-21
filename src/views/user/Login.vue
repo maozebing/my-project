@@ -113,6 +113,7 @@
 </template>
 
 <script>
+    import store from '@/store'
     import md5 from 'md5'
 
     export default {
@@ -223,6 +224,9 @@
                 })
             },
             loginSuccess() {
+                store.commit('SET_NAME', "一杯闲");
+                store.commit('SET_AVATAR', 'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png');
+                sessionStorage.setItem("token", "123456");
                 this.$router.push({name: 'dashboard'})
                 // 延迟 1 秒显示欢迎信息
                 setTimeout(() => {
