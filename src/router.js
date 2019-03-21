@@ -35,7 +35,39 @@ export default new Router({
               meta: { title: '工作台', keepAlive: true, permission: [ 'dashboard' ] }
             }
           ]
-        }
+        },
+        // account
+        {
+          path: '/account',
+          component: RouteView,
+          redirect: '/account/center',
+          name: 'account',
+          meta: { title: '个人页', icon: 'user', keepAlive: true, permission: [ 'user' ] },
+          children: [
+            {
+              path: '/account/center',
+              name: 'center',
+              component: () => import('@/views/account/center/Index'),
+              meta: { title: '个人中心', keepAlive: true, permission: [ 'user' ] }
+            },
+            {
+              path: '/account/settings',
+              name: 'settings',
+              component: () => import('@/views/account/settings/Index'),
+              meta: { title: '个人设置', hideHeader: true, permission: [ 'user' ] },
+              redirect: '/account/settings/base',
+              hideChildrenInMenu: true,
+              children: [
+                {
+                  path: '/account/settings/base',
+                  name: 'baseSettings',
+                  component: () => import('@/views/account/settings/BaseSetting'),
+                  meta: { title: '基本设置', hidden: true, permission: [ 'user' ] }
+                }
+              ]
+            }
+          ]
+        },
       ]
     },
   ]

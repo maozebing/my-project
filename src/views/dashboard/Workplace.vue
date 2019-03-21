@@ -86,7 +86,7 @@
                             <a-button size="small" type="primary" ghost icon="plus">添加</a-button>
                         </div>
                     </a-card>
-                    <a-card title="XX 指数" :loading="radarLoading" :bordered="false"
+                    <a-card title="XX 指数"  :bordered="false"
                             :body-style="{ padding: 0 }"
                             class="work-index">
                         <div style="min-height: 400px;">
@@ -135,7 +135,8 @@
                     {item: "贡献", 个人: 40, 团队: 50, 部门: 40},
                     {item: "热度", 个人: 60, 团队: 70, 部门: 40},
                     {item: "引用", 个人: 70, 团队: 50, 部门: 40}
-                ]
+                ],
+                radarData:[]
             }
         },
         methods: {
