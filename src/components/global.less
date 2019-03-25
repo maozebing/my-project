@@ -14,7 +14,7 @@ body {
   min-height: 100%;
   overflow-x: hidden;
 
-  &.mobile,&.tablet {
+  &.mobile, &.tablet {
 
     .ant-layout-content {
 
@@ -27,16 +27,20 @@ body {
      * ant-table-wrapper
      * 覆盖的表格手机模式样式，如果想修改在手机上表格最低宽度，可以在这里改动
      */
+
     .ant-table-wrapper {
       .ant-table-content {
         overflow-y: auto;
       }
+
       .ant-table-body {
         min-width: 800px;
       }
     }
+
     .topmenu {
       /* 必须为 topmenu  才能启用流式布局 */
+
       &.content-width-Fluid {
         .header-index-wide {
           margin-left: 0;
@@ -49,7 +53,7 @@ body {
     .sidemenu {
       .ant-header-fixedHeader {
 
-        &.ant-header-side-opened, &.ant-header-side-closed  {
+        &.ant-header-side-opened, &.ant-header-side-closed {
           width: 100%
         }
       }
@@ -67,6 +71,7 @@ body {
     cursor: pointer;
     transition: color .3s;
     float: left;
+
     &:hover {
       background: rgba(0, 0, 0, 0.025);
     }
@@ -89,7 +94,9 @@ body {
         width: 100%;
       }
     }
+
     /* 必须为 topmenu  才能启用流式布局 */
+
     &.content-width-Fluid {
       .header-index-wide {
         max-width: unset;
@@ -167,6 +174,7 @@ body {
 
         .action {
           color: rgba(255, 255, 255, 0.85);
+
           a {
             color: rgba(255, 255, 255, 0.85);
           }
@@ -179,7 +187,7 @@ body {
     }
   }
 
-  &.mobile,&.tablet {
+  &.mobile, &.tablet {
     .top-nav-header-index {
 
       .header-index-wide {
@@ -195,6 +203,7 @@ body {
             flex: 0 0 56px;
             text-align: center;
             line-height: 58px;
+
             h1 {
               display: none;
             }
@@ -212,6 +221,7 @@ body {
             }
           }
         }
+
         //
       }
     }
@@ -226,10 +236,11 @@ body {
         .header-index-left {
           .logo > a {
             overflow: hidden;
-            text-overflow:ellipsis;
+            text-overflow: ellipsis;
             white-space: nowrap;
           }
         }
+
         .ant-menu.ant-menu-horizontal {
           flex: 1 1;
           white-space: normal;
@@ -240,9 +251,9 @@ body {
   }
 
   .top-nav-header-index {
-    box-shadow: 0 1px 4px rgba(0,21,41,.08);
+    box-shadow: 0 1px 4px rgba(0, 21, 41, .08);
     position: relative;
-    transition: background .3s,width .2s;
+    transition: background .3s, width .2s;
 
     .header-index-wide {
       max-width: 1200px;
@@ -337,8 +348,10 @@ body {
       background-color: rgb(0, 21, 41);
     }
   }
+
   &.light {
     box-shadow: none;
+
     .ant-drawer-content {
       background-color: #fff;
     }
@@ -356,10 +369,11 @@ body {
   z-index: 10;
   height: auto;
 
-  .ant-layout-sider-children  {
+  .ant-layout-sider-children {
     padding-top: 64px;
     overflow-y: hidden;
-    &:hover{
+
+    &:hover {
       overflow-y: auto;
     }
   }
@@ -397,7 +411,7 @@ body {
       color: #fff;
       font-size: 20px;
       margin: 0 0 0 12px;
-      font-family: Avenir,Helvetica Neue,Arial,Helvetica,sans-serif;
+      font-family: Avenir, Helvetica Neue, Arial, Helvetica, sans-serif;
       font-weight: 600;
       vertical-align: middle;
     }
@@ -429,6 +443,7 @@ body {
     user-select: none;
   }
 }
+
 .user-dropdown-menu-wrapper.ant-dropdown-menu {
   padding: 4px 0;
 
@@ -466,11 +481,12 @@ body {
         vertical-align: middle;
       }
 
-      >.ant-form-item-label {
+      > .ant-form-item-label {
         line-height: 32px;
         padding-right: 8px;
         width: auto;
       }
+
       .ant-form-item-control {
         height: 32px;
         line-height: 32px;

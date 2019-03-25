@@ -1,5 +1,6 @@
 import BasicLayout from '@/components/layouts/BasicLayout'
-import RouteView from '@/components/layouts/RouteView'
 import UserLayout from '@/components/layouts/UserLayout'
+import RouteView from '@/components/layouts/RouteView'
+import PageView from '@/components/layouts/PageView'
 
-export {BasicLayout, RouteView, UserLayout}
+export {BasicLayout, UserLayout, RouteView, PageView}

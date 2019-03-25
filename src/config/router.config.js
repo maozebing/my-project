@@ -1,4 +1,4 @@
-import {BasicLayout, RouteView, UserLayout} from '@/components/layouts'
+import {BasicLayout, UserLayout, RouteView, PageView} from '@/components/layouts'
 
 /**
  * 菜单路由
@@ -63,6 +63,48 @@ export const asyncRouterMap = [
                                 meta: {title: '基本设置', hidden: true, permission: ['user']}
                             }
                         ]
+                    }
+                ]
+            },
+            {
+                path: '/function',
+                redirect: '/function/function',
+                component: PageView,
+                meta: {title: '权限管理', icon: 'form', permission: ['function']},
+                children: [
+                    {
+                        path: '/function/function',
+                        name: 'function',
+                        component: () => import('@/views/function/Function'),
+                        meta: {title: '菜单管理', keepAlive: true, permission: ['function']}
+                    }
+                ]
+            },
+            {
+                path: '/role',
+                redirect: '/role/role',
+                component: PageView,
+                meta: {title: '权限管理', icon: 'form', permission: ['admin']},
+                children: [
+                    {
+                        path: '/role/role',
+                        name: 'role',
+                        component: () => import('@/views/role/Role'),
+                        meta: {title: '角色管理', keepAlive: true, permission: ['admin']}
+                    }
+                ]
+            },
+            {
+                path: '/user',
+                redirect: '/user/user',
+                component: PageView,
+                meta: {title: '权限管理', icon: 'form', permission: ['admin']},
+                children: [
+                    {
+                        path: '/user/user',
+                        name: 'user',
+                        component: () => import('@/views/user/User'),
+                        meta: {title: '用户管理', keepAlive: true, permission: ['admin']}
                     }
                 ]
             },

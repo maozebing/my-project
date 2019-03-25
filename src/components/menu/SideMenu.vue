@@ -18,10 +18,10 @@
                 <a-menu-item key="analysis">分析页</a-menu-item>
             </a-sub-menu>
             <a-sub-menu key="sub2">
-                <span slot="title"><a-icon type="user"/><span>User</span></span>
-                <a-menu-item key="3">Tom</a-menu-item>
-                <a-menu-item key="4">Bill</a-menu-item>
-                <a-menu-item key="5">Alex</a-menu-item>
+                <span slot="title"><a-icon type="setting" /><span>权限控制</span></span>
+                <a-menu-item key="function">菜单管理</a-menu-item>
+                <a-menu-item key="role">角色管理</a-menu-item>
+                <a-menu-item key="user">用户管理</a-menu-item>
             </a-sub-menu>
         </a-menu>
     </a-layout-sider>
@@ -53,7 +53,6 @@
         methods: {
             menuClick(item) {
                 this.$router.push({name: item.key})
-                console.log(item)
             }
         }
     }
