@@ -10,7 +10,7 @@
 
         <a-table ref="table" :columns="columns" :dataSource="data">
             <span slot="actions" slot-scope="text, record">
-                <a-tag v-for="(action, index) in record.actionData" :key="index">{{ action.describe }}</a-tag>
+                <a-tag color="cyan" v-for="(action, index) in record.actionData" :key="index">{{ action.describe }}</a-tag>
             </span>
 
             <span slot="icon" slot-scope="text,record"><a-icon :type="record.icon"/>{{record.icon}}</span>
@@ -125,7 +125,7 @@
                 const statusMap = {
                     1: '正常',
                     0: '禁用'
-                }
+                };
                 return statusMap[status]
             }
         },
