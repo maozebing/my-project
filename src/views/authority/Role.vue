@@ -114,6 +114,94 @@
                                 roleId: "admin"
                             }
                         ]
+                    },
+                    {
+                        key: '2',
+                        id: 'admin',
+                        name: '管理员',
+                        status: 1,
+                        permissions: [
+                            {
+                                actionEntitySet: [
+                                    {action: "add", describe: "新增", defaultCheck: false},
+                                    {action: "query", describe: "查询", defaultCheck: false},
+                                    {action: "get", describe: "详情", defaultCheck: false},
+                                    {action: "update", describe: "修改", defaultCheck: false},
+                                    {action: "delete", describe: "删除", defaultCheck: false}
+                                ],
+                                permissionId: "comment",
+                                permissionName: "评论管理",
+                                roleId: "admin"
+                            },
+                            {
+                                actionEntitySet: [
+                                    {action: "add", describe: "新增", defaultCheck: false},
+                                    {action: "get", describe: "详情", defaultCheck: false},
+                                    {action: "update", describe: "修改", defaultCheck: false},
+                                    {action: "delete", describe: "删除", defaultCheck: false}
+                                ],
+                                permissionId: "role",
+                                permissionName: "角色管理",
+                                roleId: "admin"
+                            },
+                            {
+                                actionEntitySet: [
+                                    {action: "add", describe: "新增", defaultCheck: false},
+                                    {action: "import", describe: "导入", defaultCheck: false},
+                                    {action: "get", describe: "详情", defaultCheck: false},
+                                    {action: "update", describe: "修改", defaultCheck: false},
+                                    {action: "delete", describe: "删除", defaultCheck: false},
+                                    {action: "export", describe: "导出", defaultCheck: false}
+                                ],
+                                permissionId: "user",
+                                permissionName: "用户管理",
+                                roleId: "admin"
+                            }
+                        ]
+                    },
+                    {
+                        key: '3',
+                        id: 'user',
+                        name: '普通员工',
+                        status: 1,
+                        permissions: [
+                            {
+                                actionEntitySet: [
+                                    {action: "add", describe: "新增", defaultCheck: false},
+                                    {action: "query", describe: "查询", defaultCheck: false},
+                                    {action: "get", describe: "详情", defaultCheck: false},
+                                    {action: "update", describe: "修改", defaultCheck: false},
+                                    {action: "delete", describe: "删除", defaultCheck: false}
+                                ],
+                                permissionId: "comment",
+                                permissionName: "评论管理",
+                                roleId: "admin"
+                            },
+                            {
+                                actionEntitySet: [
+                                    {action: "add", describe: "新增", defaultCheck: false},
+                                    {action: "get", describe: "详情", defaultCheck: false},
+                                    {action: "update", describe: "修改", defaultCheck: false},
+                                    {action: "delete", describe: "删除", defaultCheck: false}
+                                ],
+                                permissionId: "role",
+                                permissionName: "角色管理",
+                                roleId: "admin"
+                            },
+                            {
+                                actionEntitySet: [
+                                    {action: "add", describe: "新增", defaultCheck: false},
+                                    {action: "import", describe: "导入", defaultCheck: false},
+                                    {action: "get", describe: "详情", defaultCheck: false},
+                                    {action: "update", describe: "修改", defaultCheck: false},
+                                    {action: "delete", describe: "删除", defaultCheck: false},
+                                    {action: "export", describe: "导出", defaultCheck: false}
+                                ],
+                                permissionId: "user",
+                                permissionName: "用户管理",
+                                roleId: "admin"
+                            }
+                        ]
                     }
                 ]
             }
