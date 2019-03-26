@@ -19,7 +19,7 @@
             </a-sub-menu>
             <a-sub-menu key="sub2">
                 <span slot="title"><a-icon type="setting" /><span>权限控制</span></span>
-                <a-menu-item key="function">菜单管理</a-menu-item>
+                <a-menu-item key="menu">菜单管理</a-menu-item>
                 <a-menu-item key="role">角色管理</a-menu-item>
                 <a-menu-item key="user">用户管理</a-menu-item>
             </a-sub-menu>
