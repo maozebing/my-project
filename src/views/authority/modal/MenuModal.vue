@@ -27,6 +27,15 @@
                     </a-select>
                 </a-form-item>
 
+                <a-form-item
+                        :labelCol="labelCol"
+                        :wrapperCol="wrapperCol"
+                        label="描述"
+                        hasFeedback
+                >
+                    <a-textarea :rows="5" placeholder="..." v-decorator="[ 'describe', { rules: [] } ]"/>
+                </a-form-item>
+
                 <a-divider/>
 
                 <a-form-item label="赋予权限" :labelCol="labelCol" :wrapperCol="wrapperCol" hasFeedback>

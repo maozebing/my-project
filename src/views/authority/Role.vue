@@ -33,16 +33,16 @@
             </span>
         </a-table>
 
-        <menu-modal ref="modal" @ok="handleOk"></menu-modal>
+        <role-modal ref="modal" @ok="handleOk"></role-modal>
     </a-card>
 </template>
 
 <script>
-    import MenuModal from './modal/MenuModal'
+    import RoleModal from './modal/RoleModal'
 
     export default {
         name: "Role",
-        components: {MenuModal},
+        components: {RoleModal},
         data() {
             return {
                 columns: [
@@ -85,8 +85,8 @@
                                     {action: "update", describe: "修改", defaultCheck: false},
                                     {action: "delete", describe: "删除", defaultCheck: false}
                                 ],
-                                permissionId: "comment",
-                                permissionName: "评论管理",
+                                permissionId: "menu",
+                                permissionName: "菜单管理",
                                 roleId: "admin"
                             },
                             {
