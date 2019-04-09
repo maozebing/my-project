@@ -12,18 +12,22 @@
 
                 <a-form-item label="唯一识别码" placeholder="唯一识别码" :labelCol="labelCol" :wrapperCol="wrapperCol"
                              hasFeedback>
-                    <a-input v-decorator="[ 'id',{rules: [{ required: true, message: '请输入唯一识别码' }]}]"/>
+                    <a-input v-decorator="[ 'code',{rules: [{ required: true, message: '请输入唯一识别码' }]}]"/>
                 </a-form-item>
 
                 <a-form-item label="菜单名称" placeholder="菜单名称" :labelCol="labelCol" :wrapperCol="wrapperCol" hasFeedback>
                     <a-input v-decorator="[ 'name',{rules: [{ required: true, message: '请输入菜单名称' }]}]"/>
                 </a-form-item>
 
+                <a-form-item label="菜单图标" placeholder="菜单图标" :labelCol="labelCol" :wrapperCol="wrapperCol" hasFeedback>
+                    <a-input v-decorator="[ 'icon',{rules: [{ required: true, message: '请输入菜单名称' }]}]"/>
+                </a-form-item>
+
                 <a-form-item label="状态" :labelCol="labelCol" :wrapperCol="wrapperCol" hasFeedback>
-                    <a-select v-decorator="['status',{rules: [{ required: true, message: '请选择状态' }]}]"
+                    <a-select v-decorator="['deleted',{rules: [{ required: true, message: '请选择状态' }]}]"
                               placeholder="请选择菜单状态">
-                        <a-select-option :value="1">正常</a-select-option>
-                        <a-select-option :value="0">禁用</a-select-option>
+                        <a-select-option :value="false">正常</a-select-option>
+                        <a-select-option :value="true">禁用</a-select-option>
                     </a-select>
                 </a-form-item>
 
@@ -72,8 +76,8 @@
                     sm: {span: 16}
                 },
                 permissionList: [
-                    {label: '新增', value: 'add', defaultChecked: false},
                     {label: '查询', value: 'get', defaultChecked: false},
+                    {label: '新增', value: 'add', defaultChecked: false},
                     {label: '修改', value: 'update', defaultChecked: false},
                     {label: '列表', value: 'query', defaultChecked: false},
                     {label: '删除', value: 'delete', defaultChecked: false},
@@ -86,6 +90,12 @@
             add() {
                 this.visible = true;
                 this.title = "新增";
+                this.$nextTick(() => {
+                    this.form.setFieldsValue({
+                        leaf: 1,
+                        status: 1
+                    })
+                })
             },
             edit(record) {
                 this.visible = true;
@@ -93,8 +103,12 @@
                 this.$nextTick(() => {
                     this.form.setFieldsValue({
                         id: record.id,
+                        code: record.code,
                         name: record.name,
-                        status: record.status
+                        icon: record.icon,
+                        deleted: record.deleted,
+                        describe: record.describe,
+                        actions: record.actions
                     })
                 })
             },

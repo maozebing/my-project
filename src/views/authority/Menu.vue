@@ -8,9 +8,10 @@
             </a-form>
         </div>
 
-        <a-table ref="table" :columns="columns" :dataSource="data">
+        <a-table ref="table" :columns="columns" :dataSource="tableData" :loading="loading">
             <span slot="actions" slot-scope="text, record">
-                <a-tag color="cyan" v-for="(action, index) in record.actionData" :key="index">{{ action.describe }}</a-tag>
+                <a-tag color="cyan" v-for="(action, index) in record.actionsData"
+                       :key="index">{{ action.label }}</a-tag>
             </span>
 
             <span slot="icon" slot-scope="text,record"><a-icon :type="record.icon"/>{{record.icon}}</span>
@@ -27,6 +28,7 @@
 
 <script>
     import MenuModal from './modal/MenuModal'
+    import {api_listMenu} from "../../axios/api/menu_api";
 
     export default {
         name: "Function",
@@ -41,8 +43,8 @@
                     },
                     {
                         title: '唯一识别码',
-                        dataIndex: 'id',
-                        key: 'id'
+                        dataIndex: 'code',
+                        key: 'code'
                     },
                     {
                         title: '菜单ICON',
@@ -52,14 +54,14 @@
                     },
                     {
                         title: '可操作权限',
-                        dataIndex: 'actions',
-                        key: 'actions',
+                        dataIndex: 'actionsData',
+                        key: 'actionsData',
                         scopedSlots: {customRender: 'actions'}
                     },
                     {
                         title: '状态',
-                        dataIndex: 'status',
-                        key: 'status',
+                        dataIndex: 'deleted',
+                        key: 'deleted',
                         scopedSlots: {customRender: 'status'}
                     },
                     {
@@ -70,7 +72,7 @@
                         scopedSlots: {customRender: 'action'}
                     }
                 ],
-                data: [
+                tableData: [
                     {
                         key: '1',
                         id: 'authority',
@@ -117,14 +119,15 @@
                             }
                         ]
                     }
-                ]
+                ],
+                loading: false
             }
         },
         filters: {
             statusFilter(status) {
                 const statusMap = {
-                    1: '正常',
-                    0: '禁用'
+                    false: '正常',
+                    true: '禁用'
                 };
                 return statusMap[status]
             }
@@ -132,8 +135,30 @@
         methods: {
             //重新加载表格数据
             handleOk() {
+                this.listMenu()
+            },
+            listMenu() {
+                this.loading = true;
+                api_listMenu().then(res => {
+                    let perentMenu = res.data.filter((item) => {
+                        return !item.leaf;
+                    });
 
+                    perentMenu.forEach(v => {
+                        v.children = res.data.filter((item) => {
+                            return item.parent == v.code;
+                        })
+                    });
+
+                    this.tableData = perentMenu;
+                    this.loading = false;
+                }).catch(err => {
+                    this.loading = false;
+                })
             }
+        },
+        mounted() {
+            this.listMenu()
         }
     }
 </script>
