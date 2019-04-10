@@ -8,9 +8,10 @@
             </a-form>
         </div>
 
-        <a-table ref="table" :columns="columns" :dataSource="data">
+        <a-table ref="table" :columns="columns" :dataSource="tableData" :loading="loading"
+                 :rowKey="record => record.id">
             <span slot="roles" slot-scope="text, record">
-                <a-tag color="cyan" v-for="(action, index) in record.roles" :key="index">{{ action.describe }}</a-tag>
+                <a-tag color="cyan" v-for="(action, index) in record.roles" :key="index">{{ action.name }}</a-tag>
             </span>
 
             <span slot="status" slot-scope="text"><a-badge status="success"/>{{ text | statusFilter }}</span>
@@ -20,16 +21,17 @@
             </span>
         </a-table>
 
-        <menu-modal ref="modal" @ok="handleOk"></menu-modal>
+        <user-modal ref="modal" @ok="handleOk"></user-modal>
     </a-card>
 </template>
 
 <script>
-    import MenuModal from './modal/MenuModal'
+    import UserModal from './modal/UserModal'
+    import {api_listUser} from "../../axios/api/user_api";
 
     export default {
         name: "User",
-        components: {MenuModal},
+        components: {UserModal},
         data() {
             return {
                 columns: [
@@ -40,8 +42,8 @@
                     },
                     {
                         title: '唯一识别码',
-                        dataIndex: 'id',
-                        key: 'id'
+                        dataIndex: 'code',
+                        key: 'code'
                     },
                     {
                         title: '角色',
@@ -51,8 +53,8 @@
                     },
                     {
                         title: '状态',
-                        dataIndex: 'status',
-                        key: 'status',
+                        dataIndex: 'deleted',
+                        key: 'deleted',
                         scopedSlots: {customRender: 'status'}
                     },
                     {
@@ -63,7 +65,7 @@
                         scopedSlots: {customRender: 'action'}
                     }
                 ],
-                data: [
+                tableData: [
                     {
                         key: '1',
                         id: '001',
@@ -82,14 +84,15 @@
                             {id: "user", describe: "普通员工", defaultCheck: false}
                         ]
                     },
-                ]
+                ],
+                loading: false
             }
         },
         filters: {
             statusFilter(status) {
                 const statusMap = {
-                    1: '正常',
-                    0: '禁用'
+                    false: '正常',
+                    true: '禁用'
                 };
                 return statusMap[status]
             }
@@ -98,7 +101,19 @@
             //重新加载表格数据
             handleOk() {
 
+            },
+            listUser() {
+                this.loading = true;
+                api_listUser({}).then(res => {
+                    this.tableData = res.data;
+                    this.loading = false;
+                }).catch(err => {
+                    this.loading = false;
+                })
             }
+        },
+        mounted() {
+            this.listUser()
         }
     }
 </script>
