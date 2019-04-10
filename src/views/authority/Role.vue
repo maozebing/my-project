@@ -8,7 +8,7 @@
             </a-form>
         </div>
 
-        <a-table ref="table" :columns="columns" :dataSource="data">
+        <a-table ref="table" :columns="columns" :dataSource="tableData" :loading="loading" :rowKey="record => record.id">
             <p slot="expandedRowRender" slot-scope="record" style="margin: 0">
                 <a-row :gutter="24" :style="{ marginBottom: '12px' }">
                     <a-col :span="12" v-for="(role, index) in record.permissions" :key="index"
@@ -16,9 +16,9 @@
                         <a-col :span="5">
                             <span>{{ role.permissionName }}：</span>
                         </a-col>
-                        <a-col :span="19" v-if="role.actionEntitySet.length > 0">
-                            <a-tag color="cyan" v-for="(action, k) in role.actionEntitySet" :key="k">
-                                {{ action.describe }}
+                        <a-col :span="19" v-if="role.actions.length > 0">
+                            <a-tag color="cyan" v-for="(action, k) in role.actionsData" :key="k">
+                                {{ action.label }}
                             </a-tag>
                         </a-col>
                         <a-col :span="20" v-else>-</a-col>
@@ -39,6 +39,7 @@
 
 <script>
     import RoleModal from './modal/RoleModal'
+    import {api_listRole} from "../../axios/api/role_api";
 
     export default {
         name: "Role",
@@ -53,13 +54,13 @@
                     },
                     {
                         title: '唯一识别码',
-                        dataIndex: 'id',
-                        key: 'id'
+                        dataIndex: 'code',
+                        key: 'code'
                     },
                     {
                         title: '状态',
-                        dataIndex: 'status',
-                        key: 'status',
+                        dataIndex: 'deleted',
+                        key: 'deleted',
                         scopedSlots: {customRender: 'status'}
                     },
                     {
@@ -70,7 +71,7 @@
                         scopedSlots: {customRender: 'action'}
                     }
                 ],
-                data: [
+                tableData: [
                     {
                         key: '1',
                         id: 'super',
@@ -203,14 +204,15 @@
                             }
                         ]
                     }
-                ]
+                ],
+                loading: false
             }
         },
         filters: {
             statusFilter(status) {
                 const statusMap = {
-                    1: '正常',
-                    0: '禁用'
+                    false: '正常',
+                    true: '禁用'
                 };
                 return statusMap[status]
             }
@@ -219,7 +221,19 @@
             //重新加载表格数据
             handleOk() {
 
+            },
+            listRole() {
+                this.loading = true;
+                api_listRole({}).then(res => {
+                    this.tableData = res.data
+                    this.loading = false;
+                }).catch(err => {
+                    this.loading = false;
+                })
             }
+        },
+        mounted() {
+            this.listRole()
         }
     }
 </script>

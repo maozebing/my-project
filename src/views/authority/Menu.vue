@@ -8,7 +8,7 @@
             </a-form>
         </div>
 
-        <a-table ref="table" :columns="columns" :dataSource="tableData" :loading="loading">
+        <a-table ref="table" :columns="columns" :dataSource="tableData" :loading="loading" :rowKey="record => record.id">
             <span slot="actions" slot-scope="text, record">
                 <a-tag color="cyan" v-for="(action, index) in record.actionsData"
                        :key="index">{{ action.label }}</a-tag>
