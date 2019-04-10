@@ -104,11 +104,16 @@
                 this.title = "编辑";
                 this.isAdd = false;
                 this.editData = record;
+                let roles=[];
+                record.roles.forEach(v=>{
+                   roles.push(v.code)
+                });
 
                 this.$nextTick(() => {
                     this.form.setFieldsValue({
                         name: record.name,
-                        deleted: record.deleted
+                        deleted: record.deleted,
+                        roles:roles
                     })
                 })
             },
