@@ -39,7 +39,7 @@
 
 <script>
     import RoleModal from './modal/RoleModal'
-    import {api_listRole} from "../../axios/api/role_api";
+    import {api_listRole} from "../../api/role_api";
 
     export default {
         name: "Role",

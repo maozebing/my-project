@@ -1,3 +1,4 @@
+
 const user = {
     state: {
         token: '',
@@ -27,8 +28,6 @@ const user = {
     actions: {
 
     },
-    getters: {
-
-    }
+    getters: {}
 };
 export default user

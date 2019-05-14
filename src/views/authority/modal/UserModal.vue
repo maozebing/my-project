@@ -51,8 +51,8 @@
 </template>
 
 <script>
-    import {api_listRole} from "../../../axios/api/role_api";
-    import {api_addUser,api_updateUser} from "../../../axios/api/user_api";
+    import {api_listRole} from "../../../api/role_api";
+    import {api_addUser,api_updateUser} from "../../../api/user_api";
 
     export default {
         name: "RoleModal",

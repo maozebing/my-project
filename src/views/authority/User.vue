@@ -27,7 +27,7 @@
 
 <script>
     import UserModal from './modal/UserModal'
-    import {api_listUser} from "../../axios/api/user_api";
+    import {api_listUser} from "../../api/user_api";
 
     export default {
         name: "User",

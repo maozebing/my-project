@@ -70,8 +70,8 @@
 </template>
 
 <script>
-    import {api_listMenu} from "../../../axios/api/menu_api";
-    import {api_addRole, api_updateRole} from "../../../axios/api/role_api";
+    import {api_listMenu} from "../../../api/menu_api";
+    import {api_addRole, api_updateRole} from "../../../api/role_api";
 
     export default {
         name: "RoleModal",

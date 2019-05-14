@@ -13,15 +13,15 @@ NProgress.configure({showSpinner: false});
 const whiteList = ['login'];
 
 // 全局钩子
-router.beforeEach((to, from, next) => {
+/*router.beforeEach((to, from, next) => {
     NProgress.start();// start progress bar
-    if (sessionStorage.getItem("token")) {
+    if (1==1) {
         // 登录后进入登录页
         if (to.path === '/login') {
             next({path: '/'});
             NProgress.done() // if current page is dashboard will not trigger afterEach hook, so manually handle it
         } else {
-            if(store.getters.roles.length===0){
+            if(1===1){
                 store.commit('SET_ROLES',['admin']);
                 // 当进入非登录页时，需要进行权限校验
                 router.addRoutes(asyncRouterMap) // 动态添加可访问路由表
@@ -47,7 +47,7 @@ router.beforeEach((to, from, next) => {
             NProgress.done() // if current page is login will not trigger afterEach hook, so manually handle it
         }
     }
-});
+});*/
 
 router.afterEach(() => {
     NProgress.done() // finish progress bar

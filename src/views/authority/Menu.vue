@@ -10,8 +10,8 @@
 
         <a-table ref="table" :columns="columns" :dataSource="tableData" :loading="loading" :rowKey="record => record.id">
             <span slot="actions" slot-scope="text, record">
-                <a-tag color="cyan" v-for="(action, index) in record.actionsData"
-                       :key="index">{{ action.label }}</a-tag>
+                <a-tag color="cyan" v-for="(action, index) in record.actionData"
+                       :key="index">{{ action.describe }}</a-tag>
             </span>
 
             <span slot="icon" slot-scope="text,record"><a-icon :type="record.icon"/>{{record.icon}}</span>
@@ -28,7 +28,7 @@
 
 <script>
     import MenuModal from './modal/MenuModal'
-    import {api_listMenu} from "../../axios/api/menu_api";
+    import {api_listMenu} from "../../api/menu_api";
 
     export default {
         name: "Function",
@@ -76,48 +76,58 @@
                     {
                         key: '1',
                         id: 'authority',
-                        name: '权限控制',
+                        name: '系统设置',
                         icon: 'safety-certificate',
                         status: 1,
                         actionData: [],
-                        children: [
+                        children:[
                             {
                                 key: '2',
-                                id: "menu",
-                                name: "菜单管理",
-                                icon: 'bars',
+                                id: 'permission',
+                                name: '权限控制',
+                                icon: 'safety-certificate',
                                 status: 1,
-                                actionData: [
-                                    {action: "get", defaultCheck: false, describe: "查询"},
-                                    {action: "add", defaultCheck: false, describe: "新增"},
-                                    {action: "update", defaultCheck: false, describe: "修改"}
-                                ]
-                            },
-                            {
-                                key: '3',
-                                id: "role",
-                                name: "角色管理",
-                                icon: 'robot',
-                                status: 1,
-                                actionData: [
-                                    {action: "get", defaultCheck: false, describe: "查询"},
-                                    {action: "add", defaultCheck: false, describe: "新增"},
-                                    {action: "update", defaultCheck: false, describe: "修改"}
-                                ]
-                            },
-                            {
-                                key: '4',
-                                id: "user",
-                                name: "用户管理",
-                                icon: 'team',
-                                status: 1,
-                                actionData: [
-                                    {action: "get", defaultCheck: false, describe: "查询"},
-                                    {action: "add", defaultCheck: false, describe: "新增"},
-                                    {action: "update", defaultCheck: false, describe: "修改"}
+                                actionData: [],
+                                children: [
+                                    {
+                                        key: '2',
+                                        id: "menu",
+                                        name: "菜单管理",
+                                        icon: 'bars',
+                                        status: 1,
+                                        actionData: [
+                                            {action: "get", defaultCheck: false, describe: "查询"},
+                                            {action: "add", defaultCheck: false, describe: "新增"},
+                                            {action: "update", defaultCheck: false, describe: "修改"}
+                                        ]
+                                    },
+                                    {
+                                        key: '3',
+                                        id: "role",
+                                        name: "角色管理",
+                                        icon: 'robot',
+                                        status: 1,
+                                        actionData: [
+                                            {action: "get", defaultCheck: false, describe: "查询"},
+                                            {action: "add", defaultCheck: false, describe: "新增"},
+                                            {action: "update", defaultCheck: false, describe: "修改"}
+                                        ]
+                                    },
+                                    {
+                                        key: '4',
+                                        id: "user",
+                                        name: "用户管理",
+                                        icon: 'team',
+                                        status: 1,
+                                        actionData: [
+                                            {action: "get", defaultCheck: false, describe: "查询"},
+                                            {action: "add", defaultCheck: false, describe: "新增"},
+                                            {action: "update", defaultCheck: false, describe: "修改"}
+                                        ]
+                                    }
                                 ]
                             }
-                        ]
+                        ],
                     }
                 ],
                 loading: false
@@ -158,7 +168,7 @@
             }
         },
         mounted() {
-            this.listMenu()
+            //this.listMenu()
         }
     }
 </script>
